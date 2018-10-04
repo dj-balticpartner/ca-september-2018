@@ -1,0 +1,18 @@
+body{
+    background:#333;
+}
+
+#app{
+    min-height: 100px;
+    background:#fff;
+    border:1px #ddd solid;
+    border-radius: 6px;
+}
+
+#results{
+    background: #fff;
+}
+
+.carImg{
+    max-width: 150px;
+}

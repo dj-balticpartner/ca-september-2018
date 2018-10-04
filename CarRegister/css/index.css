@@ -1,0 +1,24 @@
+#carsVideo{
+    width:100%;
+}
+
+#intro{
+    position: relative;
+
+    overflow: hidden;
+}
+
+#carsVideo{
+    position: absolute;
+    top:-105px;
+    z-index: 45;
+    
+}
+
+.overVideo{
+    height:300px;
+    background: orange;
+    opacity: 0.25;
+    overflow-x: hidden;
+    z-index: 50;
+}
