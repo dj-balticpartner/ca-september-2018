@@ -16,3 +16,13 @@ body{
 .carImg{
     max-width: 150px;
 }
+
+.pageHeader{
+    background: url("../img/assets/header_bg.png");
+}
+
+.pageHeader h1{
+    color:#fff;
+    padding-top:30px;
+
+}
