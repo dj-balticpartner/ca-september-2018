@@ -8,6 +8,7 @@ let noImgUrl = 'https://via.placeholder.com/250x125/d2d2d2/?text=no%20image%20ye
 
 // Atvaizdavimas pasikrovus
 let CARS = getCarsFromStorage();
+
 printArray(CARS);
 
 // Funkcijos
@@ -149,12 +150,7 @@ function createCar(){
         used = true;
     }
 
-    let id = getNewID();
-
-
-
-    return {
-        id: id,
+    var c = new Car({        
         brand: brand,
         model: model,
         engine: engine,
@@ -162,23 +158,9 @@ function createCar(){
         fuel: fuel,
         used: used,
         mainImgUrl: noImgUrl
-    }
+    });
+
+    return c;
 }
 
 
-function getNewID(){
-    let newID = 0;
-    for(i = 1; i < 10000000000; i++){
-
-        let existingCar = CARS.find(function(x) {            
-            return x.id === i;
-        });
-        
-        if(typeof existingCar === 'undefined'){
-            //found
-            newID = i;
-            break;
-        }
-    }
-    return newID;
-}
