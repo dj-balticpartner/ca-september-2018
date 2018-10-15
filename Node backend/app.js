@@ -17,12 +17,6 @@ app.use(bodyParser.urlencoded({extended: false}));
 //app.use(express.static(path.join(__dirname, 'public')));
 
 
-
-var person = {
-   name: 'Jonas',
-   age:30
-}
-
 var users = [
    {
        id: 1,
@@ -55,9 +49,39 @@ app.get('/', function (req, res) {
    //res.json(person);
 });
 
+app.post('/users/add', function (req, res) {
+    let newUser = {
+        id: getNewID(users),
+        name: req.body.name,
+        age: req.body.age,
+        email: req.body.email
+    }
+
+    users.push(newUser);
+    console.log(users);
+
+ });
+
 app.use(express.static(path.join(__dirname, 'views')));
 
 
 app.listen(3000, function(){
   console.log('Server start 3000') ;
 });
+
+function getNewID(array){
+    let newID = 0;
+    for(let i = 1; i < 10000000000; i++){
+
+        let existingentry = array.find(function(x) {            
+            return x.id === i;
+        });
+        
+        if(typeof existingentry === 'undefined'){
+            //found
+            newID = i;
+            break;
+        }
+    }
+    return newID;
+}
