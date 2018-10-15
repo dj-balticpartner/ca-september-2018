@@ -38,22 +38,36 @@ app.get('/', function (req, res) {
 app.post('/users/add', function (req, res) {
     //TODO: CONSIDER ADDING VALIDATION, Before you save!!!
     let newUser = {
-        id: getNewID(users),
+        //id: getNewID(users),
         name: req.body.name,
         age: req.body.age,
         email: req.body.email
     }
 
-    users.push(newUser);
-
+    //users.push(newUser);
+    db.users.insert(newUser, function(err,result){
+        if(err){
+            console.log(err);
+        }else{
+            console.log(result);
+        }
+        
+        res.redirect('/');
+    });
     // Reddirect to Root action OR
-    res.redirect('/');
-
+    
     // or Display response in the current URL
     // res.render('index', {
     //     title: 'Customers',
     //     users: users
     // });
+ });
+
+ app.post('/users/remove', function (req, res) {
+    let _id = req.body.userID;
+
+    //TODO: Remove user from DB
+    
  });
 
 app.use(express.static(path.join(__dirname, 'views')));

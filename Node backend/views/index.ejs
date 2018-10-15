@@ -16,7 +16,7 @@
 
 <ul>
    <% users.forEach(function(user) { %>
-    <li><%= user.name %> (<%= user.age %> )</li>
+    <li><%= user.name %> (<%= user.age %> )<button class="btn_remove" data-user="<%= user._id %>" >Delete</button></li>
    <%}) %>
 </ul>
 <% include partials/footer %>
