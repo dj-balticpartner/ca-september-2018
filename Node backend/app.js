@@ -63,11 +63,16 @@ app.post('/users/add', function (req, res) {
     // });
  });
 
- app.post('/users/remove', function (req, res) {
-    let _id = req.body.userID;
+ app.delete('/users/remove', function (req, res) {
 
+    console.log("I need to delete:"+req.params.id);
     //TODO: Remove user from DB
-    
+    db.users.remove({_id: ObjectId(req.params.id)}, function(err, result){
+        if(err){
+            console.log(err);
+        }
+        res.redirect('/');
+    });
  });
 
 app.use(express.static(path.join(__dirname, 'views')));

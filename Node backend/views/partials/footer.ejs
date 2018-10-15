@@ -1,2 +1,21 @@
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+<script >
+$(".btn_remove").click(function () {
+    let _id = $(this).attr("data-user");
+    //let _id = $(this).data("user");
+    if(confirm(`Ar tikrai norite istrinti useri ${_id}?`)){
+        $.ajax({
+            type:'DELETE',
+            url: '/users/remove/' + $(this).data('user'),
+            data: {id: _id}
+        }).done(function(response){
+            window.location.replace('/');
+        });
+        
+    }else{
+        return false;
+    }
+});
+</script>
 </body>
 </html>
