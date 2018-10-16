@@ -6,9 +6,19 @@ $(".btn_remove").click(function () {
     if(confirm(`Ar tikrai norite istrinti useri ${_id}?`)){
         $.ajax({
             type:'DELETE',
-            url: '/users/remove/' + $(this).data('user'),
-            data: {id: _id}
+            url: '/users/remove/' + _id,
+            //data: {id: _id}
+            success: function (response) {
+                //Success
+                console.log('success!');
+            },
+            error: function (jqXHR, textStatus, errorThrown) {
+                //Error
+                console.log('error!');
+                console.log(jqXHR+textStatus+errorThrown);
+            }
         }).done(function(response){
+            alert('calling done!');
             window.location.replace('/');
         });
         

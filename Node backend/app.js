@@ -3,7 +3,7 @@ var bodyParser = require('body-parser');
 var path = require ('path');
 var mongojs = require('mongojs');
 var db = mongojs('customerApp', ['users'])
-
+var ObjectId = mongojs.ObjectId;
 var app = express();
 
 var logger = function(req,res,next){
@@ -25,7 +25,7 @@ app.set('views', path.join(__dirname, 'views'));
 
 app.get('/', function (req, res) {
     db.users.find(function(err,docs){
-        console.log(docs);
+        //console.log(docs);
         res.render('index', {
             title: 'Customers',
             users: docs // docs is DB yra musu "users"
@@ -63,14 +63,17 @@ app.post('/users/add', function (req, res) {
     // });
  });
 
- app.delete('/users/remove', function (req, res) {
+ app.delete('/users/remove/:id', function (req, res) {
 
-    console.log("I need to delete:"+req.params.id);
+    console.log("I need to delete:" + req.params.id);
     //TODO: Remove user from DB
-    db.users.remove({_id: ObjectId(req.params.id)}, function(err, result){
+    db.users.remove({_id: ObjectId(req.params.id)}, function(err,result){
         if(err){
             console.log(err);
+        }else{
+            //console.log(result);
         }
+        
         res.redirect('/');
     });
  });
