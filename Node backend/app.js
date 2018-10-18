@@ -1,35 +1,67 @@
 var express = require('express');
+var cors = require('cors'); // 1
 var bodyParser = require('body-parser');
 var path = require ('path');
 var mongojs = require('mongojs');
 var db = mongojs('customerApp', ['users'])
 var ObjectId = mongojs.ObjectId;
+
 var app = express();
 
-var logger = function(req,res,next){
-   //console.log('logging...');
-   next();
-}
-
-
-app.use(logger);
 // body parser middleware
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}));
-
+app.use(cors()); // 2
 //set Static path
 //app.use(express.static(path.join(__dirname, 'public')));
 
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
 
+// app.get('/', function (req, res) {
+//     db.users.find(function(err,docs){
+//         //console.log(docs);
+//         res.render('index', {
+//             title: 'Customers',
+//             users: docs // docs is DB yra musu "users"
+//         });
+//     });
+   
+//    //res.json(person);
+// });
+
+let cars = [
+    {
+        id: 1,
+        brand: "WV",
+        model: "Passat",
+        price: 10000
+    },
+    {
+        id: 2,
+        brand: "WV",
+        model: "Polo",
+        price: 5000
+    },
+    {
+        id: 3,
+        brand: "Mazda",
+        model: "6",
+        price: 15000
+    }
+]
+
 app.get('/', function (req, res) {
     db.users.find(function(err,docs){
         //console.log(docs);
-        res.render('index', {
-            title: 'Customers',
-            users: docs // docs is DB yra musu "users"
-        });
+
+        // res.render('index', {
+        //     title: 'Customers',
+        //     users: docs // docs is DB yra musu "users"
+        // });
+
+        res.json(cars);
+        
     });
    
    //res.json(person);
