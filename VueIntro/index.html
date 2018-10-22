@@ -10,12 +10,14 @@
 <body>
     <div id="app">
         <h1>{{message}}</h1>
+        <h2>{{firstName}} {{lastName}}</h2>
+        <input type="text" v-model="firstName"> <input type="text" v-model="lastName">
         <h3>{{currentTime}}</h3>
-        <button v-on:click="printMessage('Hi')">This is my button</button>
+        <button v-on:click="printMessage('Hi')" v-bind:disabled="isDisabled">This is my button</button>
         <div>
             <ul id="example-1">
-                <li v-for="item in todos"> 
-                    <span>{{ item.id }}</span> <span>{{ item.title }}</span> <span>{{ item.completed }}</span> 
+                <li v-for="user in users"> 
+                    <user :user='user' ></user>
                 </li>
             </ul>
         </div>
