@@ -9,14 +9,16 @@
 </head>
 <body>
     <div id="app">
-        <h1>{{message}}</h1>
-        <h2>{{firstName}} {{lastName}}</h2>
-        <input type="text" v-model="firstName"> <input type="text" v-model="lastName">
-        <h3>{{currentTime}}</h3>
-        <button v-on:click="printMessage('Hi')" v-bind:disabled="isDisabled">This is my button</button>
+      <select>
+          <option>- View all -</option>
+          <option>User #1</option>
+          <option>User #2</option>
+          <option>User #3</option>
+          <option>etc...</option>
+      </select>
         <div>
             <ul id="example-1">
-                <li v-for="user in users"> 
+                <li v-for="user in users">
                     <user :user='user' ></user>
                 </li>
             </ul>
