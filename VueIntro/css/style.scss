@@ -1,0 +1,29 @@
+$font-stack:    Helvetica, sans-serif;
+$primary-color: #333;
+$secondary-color: #f00;
+
+@mixin transform($time) {
+    -webkit-transition: $time; /* Safari */
+    transition: $time;
+  }
+
+
+
+body {
+    font: 100% $font-stack;
+    color: $primary-color;
+    @include transform(2s);
+
+    .myText{
+        color:$primary-color;
+        @include transform(2s);
+    }
+}
+
+#main{
+    .myText{
+        color:$secondary-color;
+        @include transform(2s);
+    }
+}
+

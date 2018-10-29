@@ -1,0 +1,22 @@
+body {
+  font: 100% Helvetica, sans-serif;
+  color: #333;
+  -webkit-transition: 2s;
+  /* Safari */
+  transition: 2s;
+}
+
+body .myText {
+  color: #333;
+  -webkit-transition: 2s;
+  /* Safari */
+  transition: 2s;
+}
+
+#main .myText {
+  color: #f00;
+  -webkit-transition: 2s;
+  /* Safari */
+  transition: 2s;
+}
+/*# sourceMappingURL=style.css.map */
