@@ -1,0 +1,28 @@
+body{
+    background:#333;
+}
+
+#app{
+    min-height: 100px;
+    background:#fff;
+    border:1px #ddd solid;
+    border-radius: 6px;
+}
+
+#results{
+    background: #fff;
+}
+
+.carImg{
+    max-width: 150px;
+}
+
+.pageHeader{
+    background: url("../img/assets/header_bg.png");
+}
+
+.pageHeader h1{
+    color:#fff;
+    padding-top:30px;
+
+}
