@@ -7,6 +7,7 @@ const app = express();
 
 //middleware
 app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({extended: false}));
 app.use(cors());
 
 // items

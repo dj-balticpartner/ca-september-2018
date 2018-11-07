@@ -1,7 +1,13 @@
 <template>
 
 <section id="intro">
-    {{msg}}
+    <div class="row">
+        <div class="col-12">
+            <div class="panel">
+                <div style="height:300px;"></div>
+            </div>
+        </div>
+    </div>
     <div class="overVideo"></div>            
     <video autoplay muted loop id="carsVideo">
         <source src="static/assets/carsbg.mp4" type="video/mp4">
@@ -13,7 +19,6 @@
 
 <script>
 export default {
-  name: 'SearchForm',
   data () {
     return {
       msg: 'This is search form'

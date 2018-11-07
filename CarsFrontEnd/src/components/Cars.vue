@@ -18,7 +18,7 @@
                             </tr>
                         </thead>
                         <tbody id="tbody_cars">
-                            <tr v-for="car in cars" :key="_id"><td>{{car._id}}</td></tr>    
+                            <tr v-for="car in cars" ><td>{{car._id}}</td></tr>    
                         </tbody>
                     </table>
                 </div>

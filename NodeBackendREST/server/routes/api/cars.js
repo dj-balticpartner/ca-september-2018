@@ -3,14 +3,39 @@ const mongodb = require('mongodb');
 
 const router = express.Router();
 
+let _cars = [
+    {
+        id: 1,
+        brand: "WV",
+        model: "Passat",
+        price: 10000,
+        engine: 2.0
+    },
+    {
+        id: 2,
+        brand: "WV",
+        model: "Polo",
+        price: 5000,
+        engine: 2.0
+    },
+    {
+        id: 3,
+        brand: "Mazda",
+        model: "6",
+        price: 15000,
+        engine: 2.0
+    }
+]
+
 router.get('/', async (req, res) => {
-    const cars = await loadPostsConnection();
-    res.send(await cars.find({}).toArray());
+    const cars = _cars;//await loadPostsConnection();
+    //res.send(await cars.find({}).toArray());
+    res.send(cars);
 });
 
 // Add item
 router.post('/', async (req, res) => {
-    const cars = await loadPostsConnection();
+    const cars = _cars;//await loadPostsConnection();    
     let newCar = {
         brand: req.body.brand,
         model: req.body.model,
@@ -18,7 +43,8 @@ router.post('/', async (req, res) => {
         engine: req.body.engine,
         createdAt: new Date() // consider creating a UTC date
     }
-    await cars.insertOne(newCar);
+    _cars.push(newCar);
+    //await cars.insertOne(newCar);
     res.status(201).send();
 });
 
@@ -36,12 +62,12 @@ router.post('/', async (req, res) => {
 //connect to DB
 async function loadPostsConnection() {
     const client = await mongodb.MongoClient.connect(
-        'mongodb://sa:aabbcc1234@ds143293.mlab.com:43293/vue_cars', {
+        'mongodb://sa:aabbcc1234@ds151513.mlab.com:51513/cars_db', {
         useNewUrlParser: true
     });
 
     // returns DB "vue_express" collection a.k.a table "posts"
-    return client.db('vue_cars').collection('cars');
+    return client.db('cars_db').collection('cars');
 }
 
 
